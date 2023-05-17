@@ -1,0 +1,18 @@
+html,body{
+    height: 100%;
+    line-height: normal;
+}
+
+main{
+    display: flex;
+    height: auto;
+    width: auto;
+}
+
+.form{
+    width: 30%;
+}
+
+.graph{
+    width: 70%;
+}

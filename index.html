@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>RESASお試し</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <title>RESASお試し</title>  
 </head>
 <body>
-    <form name="form">
-        <p>選択した値 <span id="span1"></span></p>
-        <input type="button" value="click" onclick="population_stat();">
-        <!-- onclick="dgp(check_radiobtn());"とするとdemographics.jsで引数が使える -->
-        <div id="resas_date">
-        </div>
-    </form>
-    <script src="prefectures.js"></script>
-    <script src="checkbox.js"></script>
-    <script src="demographics.js"></script>
+    <main>
+        <form name="form" class="form">
+            <p>選択した値 <span id="span1"></span></p>
+            <input type="button" value="click" onclick="population_stat();">
+            <!-- onclick="dgp(check_radiobtn());"とするとdemographics.jsで引数が使える -->
+            <div id="resas_date">
+            </div>
+        </form>
+            <div class = graph>
+                <canvas id="myChart" width="400" height="400"></canvas>
+            </div>
+        <script src="prefectures.js"></script>
+        <script src="checkbox.js"></script>
+        <script src="demographics.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+        <script src="graph.js"></script> -->
+    </main>
 </body>
 </html>

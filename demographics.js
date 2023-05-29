@@ -11,6 +11,84 @@ function population_stat(){
     
     fetch('https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?cityCode=-&prefCode='+data, options)
         .then(response => response.json())
-        .then(response => console.log(JSON.stringify(response)))
+        .then(response => {
+            console.log(response);
+            graph(response);
+            // response.result.data[i]で、「総人口」「生産年齢人口」みたいに項目別データが見れる
+            // response.result.data[1].data[1]で「総人口」の1980年の人口みたいに年代別データが見れる
+        })
         .catch(err => console.error(err));
+}
+
+function graph(population_data){
+    var ctx = document.getElementById("myChart").getContext('2d');
+    let years = [];
+    for(let i = 0; i < population_data.result.data[0].data.length; i++){
+        years.push(population_data.result.data[0].data[i].year);
+        // https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for
+        // 追記する処理を書き足さないといけない
+        // 入れ物を用意する。それに対して追記する処理をする（append的な）。配列？
+    }
+    console.log(years);
+    // console.log(population_data.map(years => years["year"]));
+    // https://qiita.com/tsu_eng/items/57f9d3919bf175188033
+    // https://cpoint-lab.co.jp/article/202007/16131/
+    
+
+    // const year = (years) => {
+    //         for (let i = 0; i <= years.length ; i++) {
+    //             const j = Math.floor(Math.random() * (i + 1));
+                
+    //     }
+        
+    //     var numbers = population_data.result.data[1].data[i].year;
+        
+    //     year(numbers);
+        
+    //     console.log(numbers);
+    //  }
+    var myChart = new Chart(ctx, {
+     type: 'line',
+    // グラフタイプ
+        data: {
+            labels: years,
+            // X軸
+            datasets: [{
+                label: population_data.result.data[0].label,
+                // 凡例
+                lineTension: 0,
+                // 線の直線度合い。0だとまっすぐ。
+                data: [40, 19, 3, 17, 9, 4],
+                // グラフに表示する数値データ
+                backgroundColor: [
+                    // 棒の塗りつぶし色
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    // 棒の境界線の色
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        },
+    });
+    console.log(myChart);
 }

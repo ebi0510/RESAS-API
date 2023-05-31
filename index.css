@@ -10,9 +10,14 @@ main{
 }
 
 .form{
-    width: 30%;
+    width: 140px;
 }
 
-.graph{
-    width: 70%;
+.graph_data{
+    display: block;
+    width: 100% - 140px;
+}
+
+.btn1{
+    display: inline-flex;
 }

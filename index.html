@@ -13,14 +13,24 @@
             <div id="resas_date">
             </div>
         </form>
+        <div class="graph_data">
+            <form name="btn1" class="btn1">
+                <p><input type="radio" name="check" id="1" checked="checked">総人口</p>
+                <p><input type="radio" name="check" id="2">年少人口</p>
+                <p><input type="radio" name="check" id="3">生産年齢人口</p>
+                <p><input type="radio" name="check" id="4">老年人口</p>
+            </form>
+            <p>選択した値 <span id="span2"></span></p>
+            <input type="button" value="click" onclick="graph();">
             <div class = graph>
-                <canvas id="myChart" width="400" height="400"></canvas>
+                <canvas id="myChart" width="800" height="400"></canvas>
             </div>
+        </div>
         <script src="prefectures.js"></script>
         <script src="checkbox.js"></script>
         <script src="demographics.js"></script>
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-        <script src="graph.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+        <!-- <script src="graph.js"></script> -->
     </main>
 </body>
 </html>

@@ -22,31 +22,23 @@ function population_stat(){
 
 function graph(population_data){
     var ctx = document.getElementById("myChart").getContext('2d');
+    var label_data = check_populationbtn();
+
     let years = [];
-    for(let i = 0; i < population_data.result.data[0].data.length; i++){
-        years.push(population_data.result.data[0].data[i].year);
+    for(let i = 0; i < population_data.result.data[label_data].data.length; i++){
+        years.push(population_data.result.data[label_data].data[i].year);
         // https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/for
         // 追記する処理を書き足さないといけない
         // 入れ物を用意する。それに対して追記する処理をする（append的な）。配列？
     }
     console.log(years);
-    // console.log(population_data.map(years => years["year"]));
-    // https://qiita.com/tsu_eng/items/57f9d3919bf175188033
-    // https://cpoint-lab.co.jp/article/202007/16131/
-    
 
-    // const year = (years) => {
-    //         for (let i = 0; i <= years.length ; i++) {
-    //             const j = Math.floor(Math.random() * (i + 1));
-                
-    //     }
-        
-    //     var numbers = population_data.result.data[1].data[i].year;
-        
-    //     year(numbers);
-        
-    //     console.log(numbers);
-    //  }
+    let p_data = [];
+    for(let i = 0; i < population_data.result.data[label_data].data.length; i++){
+        p_data.push(population_data.result.data[label_data].data[i].value);
+    }
+    console.log(p_data);
+
     var myChart = new Chart(ctx, {
      type: 'line',
     // グラフタイプ
@@ -54,11 +46,11 @@ function graph(population_data){
             labels: years,
             // X軸
             datasets: [{
-                label: population_data.result.data[0].label,
+                label: population_data.result.data[label_data].label,
                 // 凡例
                 lineTension: 0,
                 // 線の直線度合い。0だとまっすぐ。
-                data: [40, 19, 3, 17, 9, 4],
+                data: p_data,
                 // グラフに表示する数値データ
                 backgroundColor: [
                     // 棒の塗りつぶし色

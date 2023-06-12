@@ -1,23 +1,28 @@
-html,body{
+/* html,body{
     height: 100%;
-    line-height: normal;
-}
+    width: 100%;
+} */
 
 main{
     display: flex;
-    height: auto;
-    width: auto;
+    flex-direction: column;
+    align-items: center;
 }
 
 .form{
-    width: 140px;
-}
-
-.graph_data{
-    display: block;
-    width: 100% - 140px;
+    width: 500px;
 }
 
 .btn1{
     display: inline-flex;
+}
+
+.graph_data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+}
+
+.graph{
+    text-align: center;
 }

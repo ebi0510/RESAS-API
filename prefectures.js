@@ -12,7 +12,8 @@ const options1 = {
     .then(response => response.json())
     .then(main => {
         for(i = 0; i < main.result.length; i++){
-        resas_date.innerHTML += `<p><input type="checkbox" name="check" id="${main.result[i].prefCode}" value="${main.result[i].prefName}">${main.result[i].prefName}</p>`
+        resas_date.innerHTML += `<label><input type="radio" name="check" id="${main.result[i].prefCode}" value="${main.result[i].prefName}" onchange="population_stat();">${main.result[i].prefName}</label>`
         }
+        console.log(main)
     })
     .catch(err => console.error(err));

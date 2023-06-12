@@ -6,23 +6,30 @@
 </head>
 <body>
     <main>
-        <form name="form" class="form">
-            <p>選択した値 <span id="span1"></span></p>
-            <input type="button" value="click" onclick="population_stat();">
             <!-- onclick="dgp(check_radiobtn());"とするとdemographics.jsで引数が使える -->
+            <!-- 表示文字列は変えたほうがいい。「確定」とか -->
+            <!-- onchangeを使うとラジオボタンを変えるたびに動作するようになる（onclickでも多分できるけどこっちが最適解） -->
+            <!-- ↑のやつを使うとボタンを撤去できる -->
+        <h3>都道府県</h3>
+        <form name = "form" class="form">
             <div id="resas_date">
             </div>
         </form>
+        <h3>データ種別</h3>
         <div class="graph_data">
             <form name="btn1" class="btn1">
-                <p><input type="radio" name="check" id="1" checked="checked">総人口</p>
-                <p><input type="radio" name="check" id="2">年少人口</p>
-                <p><input type="radio" name="check" id="3">生産年齢人口</p>
-                <p><input type="radio" name="check" id="4">老年人口</p>
+                <p><input type="radio" name="check" id="0" value="総人口" onchange="population_stat(); graph();" checked="checked">総人口</p>
+                <p><input type="radio" name="check" id="1" value="年少人口" onchange="population_stat(); graph();">年少人口</p>
+                <p><input type="radio" name="check" id="2" value="生産年齢人口" onchange="population_stat(); graph();">生産年齢人口</p>
+                <p><input type="radio" name="check" id="3" value="老年人口" onchange="population_stat(); graph();">老年人口</p>
+                <!-- idが複数種類存在する場合、idの型を変えた方がいい -->
             </form>
-            <p>選択した値 <span id="span2"></span></p>
-            <input type="button" value="click" onclick="graph();">
             <div class = graph>
+                <div class = "title">
+                    <h3 id = "prefecture" style="display:inline"></h3>
+                    <h3 style="display:inline">の</h3>
+                    <h3 id = "data_type" style="display:inline"></h3>
+                </div>
                 <canvas id="myChart" width="800" height="400"></canvas>
             </div>
         </div>
@@ -30,7 +37,7 @@
         <script src="checkbox.js"></script>
         <script src="demographics.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-        <!-- <script src="graph.js"></script> -->
     </main>
 </body>
 </html>
+<!-- ボタンを押さずにデータ表示できるようにする -->

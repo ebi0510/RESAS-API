@@ -1,6 +1,7 @@
 function population_stat(){
     // index.htmlでonclick="dgp(check_radiobtn());"と書いた場合、function population_stat(data){}みたいに引数が使える
-    var data = check_radiobtn();
+    var data = get_prfecture_id();
+    // 関数名変えたほうが親切かも
     const options = {
         method: 'GET',
         headers: {
@@ -22,7 +23,7 @@ function population_stat(){
 
 function graph(population_data){
     var ctx = document.getElementById("myChart").getContext('2d');
-    var label_data = check_populationbtn();
+    var label_data = Number(get_population_id());
 
     let years = [];
     for(let i = 0; i < population_data.result.data[label_data].data.length; i++){
